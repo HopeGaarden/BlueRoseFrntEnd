@@ -1,0 +1,47 @@
+.subContainer{
+  margin: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.editTitle{
+  font-weight: bold;
+}
+
+.editContentContainer{
+  margin: 20px;
+}
+
+.editContent{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.editLetter:hover{
+  color: lightslategray;
+}
+
+.clipIcon{
+  font-size: 18px;
+  margin-right: 3px;
+} 
+.arrowIcon{
+  font-size: 20px;
+}
+
+.clipIcon:hover, .roseIcon:hover ,.arrowIcon:hover, .commentIcon:hover {
+  color: lightslategray;
+}
+
+.roseIcon{
+  font-size: 22px;
+  margin-right: 1px;
+}
+
+.commentIcon{
+  font-size: 18px;
+  margin-right: 2px;
+}

@@ -1,0 +1,36 @@
+.subContainer{
+  margin: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.editTitle{
+  font-weight: bold;
+}
+
+.editContentContainer{
+  margin: 20px;
+}
+
+.editContent{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.editLetter:hover{
+  color: lightslategray;
+}
+
+.characterIcon{
+  font-size: 20px;
+} 
+.arrowIcon{
+  font-size: 20px;
+}
+
+.characterIcon:hover {
+  color: lightslategray;
+}

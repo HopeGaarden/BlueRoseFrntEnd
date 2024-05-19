@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../layouts/Footer";
 import styles from "./Home.module.css";
 import { IoMenu, IoPersonSharp } from "react-icons/io5";
 import { motion } from "framer-motion";
 
 function Home() {
+  const navigate = useNavigate();
   // const [loading, setLoading] = useState(true);
   const [nickname, setNickname] = useState("미라클");
   const [score, setScore] = useState(5);
@@ -16,6 +17,15 @@ function Home() {
   const hoverEffect = {
     scale: 1.1,
   };
+  const transHover = {
+    type: "spring", stiffness: 400, damping: 10
+  }
+  const tapHover = {
+    scale: 0.9
+  }
+  const goMyPageHandler =() => {
+    navigate(`/mypage`)
+  }
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -24,17 +34,20 @@ function Home() {
         </div>
         <h2 className={styles.title}>블루로즈</h2>
         <div className={styles.myPage}>
-          <IoPersonSharp className={styles.myPageIcon} />
+          <IoPersonSharp className={styles.myPageIcon} onClick={goMyPageHandler}/>
         </div>
       </div>
       <div>      
         
         <div className={styles.profile}>
         <h3 className={styles.welcome}>{`환영합니다. ${nickname} 님`} </h3>
-        <img
+        <motion.img
           src={`/images/level${score}.png`}
           alt="Character Image"
           className={styles.userCharacter}
+          whileHover={hoverEffect}
+          transition={transHover}
+          whileTap={tapHover}
         />
         <h3 className={styles.userScore}>{`Lv ${score}`}</h3>
       </div>
