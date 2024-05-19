@@ -1,0 +1,105 @@
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+}
+.profilContainer {
+  display: flex;
+  font-size: 14px;
+  border-bottom: 1px solid black;
+}
+.profilButton{
+  border: none;
+  width: 30px; /* 원하는 너비 */
+  height: auto; /* 원하는 높이 */
+  border-radius: 50%; /* 이미지를 원형으로 만들고 싶을 경우 */
+  margin-bottom: 10px;
+}
+.profilImg {
+  display: flex;
+  width: 30px; /* 원하는 너비 */
+  height: auto; /* 원하는 높이 */
+  border-radius: 50%; /* 이미지를 원형으로 만들고 싶을 경우 */
+  border-style: solid;
+  border-color: #1e4fa1;
+  background-color: white;
+
+}
+.nickname {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.dots{
+margin-left: auto;
+  font-size: 20px;
+  color: #1e4fa1;
+}
+.dots:hover{
+  color:lightslategray
+}
+.titleContainer {
+  display: flex;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 20px;
+  justify-content: space-between;
+}
+.feedDate {
+  text-align: left;
+}
+.feedTitle {
+  text-align: right;
+}
+.feedItem {
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 8px;
+  margin: 10px;
+  background-color: #f2f2f2;
+  box-shadow: 2px 3px 4px #333;
+}
+.feedContent {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 20px;
+  border-width: 1px;
+}
+
+.feedImage {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}
+.roseContainer, .commentContainer{
+  border: none;
+
+}
+.roseIcon, .commentIcon{
+  width: 20px;
+  height: auto;
+}
+.feedText {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.comment {
+  display: flex;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 0 20px;
+  border-width: 1px;
+}
+.commentDetail{
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: bold;
+}

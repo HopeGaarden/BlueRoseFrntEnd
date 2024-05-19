@@ -1,35 +1,29 @@
-import './App.css';
+import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AppContainer from "./layouts/AppContainer";
-import LoginProvider from './store/LoginProvider';
-import Home from './page/Home';
-import MyNote from './page/MyNote';
-import Writing from './page/Writing';
+import LoginProvider from "./store/LoginProvider";
+import Home from "./page/Home";
+import Note from "./page/Note";
+import Writing from "./page/Writing";
 
 // Router를 통해 URL마다 페이지 제작
 const router = createBrowserRouter([
-
-  { path : '/' , 
-    element : <Home/>, 
+  { path: "/", element: <Home /> },
+  {
+    path: "/note",
+    element: <Note />,
   },
   {
-    path : '/mynote',
-    element : <MyNote/>
+    path: "/writing",
+    element: <Writing />,
   },
-  {
-    path : '/writing',
-    element : <Writing/>
-  }
-
-
 ]);
-
 
 function App() {
   return (
     <LoginProvider>
       <AppContainer>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
       </AppContainer>
     </LoginProvider>
   );

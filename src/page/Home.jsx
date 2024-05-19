@@ -43,9 +43,9 @@ function Home() {
 
       <div className={styles.iconsContainer}>
         <div className={styles.icons}>
-          <Link to={`/mynote/`}>
+          <Link to={`/note/`}>
           <motion.button className={styles.homeButton} whileHover={hoverEffect}>
-              <img src={`/images/HomeIcon/mynote.png`}></img>
+              <img src={`/images/HomeIcon/note.png`}></img>
             </motion.button>
           </Link>
         </div>
@@ -72,17 +72,17 @@ function Home() {
         </div>
       </div>
 
-      <ul className={styles.feed}>
+      <div className={styles.feed}>
         <h3 className={styles.popularFeed}>{`인기 게시글`}</h3>
-        <li className={styles.entireButton}>
-          <Link to={`/popularfeed/detail/${feedID}`}>
-            <motion.button whileHover={hoverEffect}>전체 보기</motion.button>
+        <div>
+          <Link to={`/popularfeed/detail/${feedID}`} className={styles.link}>
+            <motion.button className={styles.entireButton}whileHover={hoverEffect}>전체 보기</motion.button>
           </Link>
-        </li>
-        <li>
+        </div>
+        <div>
           <Link to={`/popularfeed/${feedID}`}></Link>
-        </li>
-      </ul>
+        </div>
+      </div>
 
       <Footer userID={userID} groupID={groupID} />
     </div>

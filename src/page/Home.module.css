@@ -89,10 +89,7 @@
 }
 
 .feed {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 80%;
-  list-style: none;
+padding: 20px;
 }
 
 .popularFeed {
@@ -106,7 +103,7 @@
   justify-content: flex-end;
 }
 
-button {
+.homeButton {
   border: none;
   background-color: #DBE8FF;
   color: #1e4fa1;
@@ -114,6 +111,21 @@ button {
   border-radius: 100px;
   box-shadow: 2px 3px 4px ;
   font-weight: bold;
+}
+
+.entireButton{
+  border: none;
+  background-color: #DBE8FF;
+  color: #1e4fa1;
+  font-size: 12px;
+  border-radius: 100px;
+  box-shadow: 2px 3px 4px;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .footerButton{

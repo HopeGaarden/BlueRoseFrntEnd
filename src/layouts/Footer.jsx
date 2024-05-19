@@ -13,14 +13,14 @@ function Footer({ userID, groupID }) {
     <React.Fragment>
       <div className={styles.footer}>
         <NavLink
-          to={`/mynote/`}
+          to={`/note/`}
           className={({ isActive }) =>
             isActive ? styles.active : styles.inactive
           }
         >
           <motion.p whileHover={hoverEffect}>
             <div>
-              <FaPencilAlt className={styles.footerIcon} alt="mynote" />
+              <FaPencilAlt className={styles.footerIcon} alt="note" />
             </div>
             <span>나의 노트</span>
           </motion.p>
