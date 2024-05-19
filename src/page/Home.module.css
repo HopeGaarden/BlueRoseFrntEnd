@@ -10,7 +10,8 @@
 
 .menuIcon, .myPageIcon{
   font-size: 30px;
-   color:#1e4fa1
+   color:#1e4fa1;
+   cursor: pointer;
 }
 
 .menuIcon:hover, .myPageIcon:hover{
@@ -88,6 +89,17 @@
   margin: 10px;
 }
 
+.homeButton {
+  border: none;
+  background-color: #DBE8FF;
+  color: #1e4fa1;
+  font-size: 12px;
+  border-radius: 100px;
+  box-shadow: 2px 3px 4px ;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .feed {
 padding: 20px;
 }
@@ -103,16 +115,6 @@ padding: 20px;
   justify-content: flex-end;
 }
 
-.homeButton {
-  border: none;
-  background-color: #DBE8FF;
-  color: #1e4fa1;
-  font-size: 12px;
-  border-radius: 100px;
-  box-shadow: 2px 3px 4px ;
-  font-weight: bold;
-}
-
 .entireButton{
   border: none;
   background-color: #DBE8FF;
@@ -122,6 +124,7 @@ padding: 20px;
   box-shadow: 2px 3px 4px;
   font-weight: bold;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .link {

@@ -1,15 +1,4 @@
 .container {
-  background-color: #ffffff;
-  display: grid;
-  justify-content: space-between;
-  grid-template-rows: 1fr 4fr 10fr;
-  width: 100%;
-  max-width: 428px;
-  max-height: 1090px;
-  min-height: 926px;
-  margin: 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 .header {
@@ -21,39 +10,55 @@
   border-bottom: 1px solid #ccc;
   background-color: #f8f8f8;
 }
-
+.button {
+  font-family: "Noto Sans KR", sans-serif;
+  border: none;
+  background-color: #dbe8ff;
+  color: #1e4fa1;
+  font-size: 12px;
+  border-radius: 100px;
+  box-shadow: 2px 3px 4px;
+  font-weight: bold;
+  margin-left: auto;
+  cursor: pointer;
+}
 .icon {
   cursor: pointer;
   color: #1e4fa1;
+  font-size: 24px;
 }
 
-.textareaContainer {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
+.icon:hover {
+  color: lightslategray;
 }
+
+
 
 .inputContainer {
   display: flex;
 }
 
 .textareaTitle {
+  font-family: "Noto Sans KR", sans-serif;
   border: none;
   border-bottom: 1px solid #ccc;
   padding: 8px 10px;
   font-size: 16px;
   flex: 1;
+  margin: 10px;
 }
 .textareaContent {
+  font-family: "Noto Sans KR", sans-serif;
   border: none;
   border-bottom: 1px solid #ccc;
   padding: 8px 10px;
   font-size: 16px;
   flex: 1;
   height: 200px;
+  margin: 10px;
 }
 .textareaTitle::placeholder {
-  color: black;
+  color: #aaa;
   font-weight: 700;
 }
 .textareaContent::placeholder {
@@ -61,7 +66,24 @@
 }
 
 .clearIcon {
-  position: relative;
-  right: 35px; /* 위치 조정 */
+  margin-left: 90%;
+  margin-top: 12px;
+  position: absolute;
   cursor: pointer;
+  font-size: 25px;
+}
+
+.clearIcon:hover{
+  color: lightslategray;
+}
+
+.clipIcon{
+  margin-left: 90%;
+  margin-top: 12px;
+  position: absolute;
+  font-size: 20px
+}
+
+.clipIcon:hover{
+  color: lightslategray;
 }
