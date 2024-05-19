@@ -1,0 +1,47 @@
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.feedItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.feedImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; /* 이미지를 원형으로 만듭니다 */
+  margin-right: 10px;
+}
+
+.feedContent {
+  flex-grow: 1;
+}
+.feedHeader {
+  display: flex;
+  gap: 5px;
+}
+.feedTitle {
+  color: #666;
+  font-size: 14px;
+}
+.feedDate {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.feedText {
+  font-size: 14px;
+  color: #333;
+}
+
+.bottomImage{
+  margin-top: 20px;
+  margin-left: 20px;
+}

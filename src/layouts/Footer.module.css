@@ -1,0 +1,42 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: auto auto auto auto auto;
+  background-color: #f0f4f8;
+  font-family: "Noto Sans KR", sans-serif;
+
+}
+
+.footerIcon {
+  margin-bottom: 5px; /* 아이콘과 텍스트 사이의 간격 */
+  font-size: 22px;
+}
+
+/* 선택된 아이템 스타일링 */
+.active {
+  flex: 1;
+  color: blue; /* 활성화된 항목의 색상 변경 */
+  text-decoration: none; /* 밑줄 없음 */
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 수직 스택 */
+  align-items: center; /* 수직 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  border-width: 1px;
+  border-color: transparent;
+}
+
+.inactive{
+  flex: 1;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column; /* 아이콘과 텍스트를 수직 스택 */
+  align-items: center; /* 수직 중앙 정렬 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  color: #B7B7B7;
+}
+
+.inactive:hover{
+color: lightslategray;
+}
+
