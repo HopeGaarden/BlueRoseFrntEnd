@@ -8,7 +8,7 @@ const Header = () => {
     <React.Fragment>
       <div className={styles.header}>
         <div>
-          <Link to={`/`} className={styles.headerIcon}>
+          <Link to={`/home`} className={styles.headerIcon}>
             <IoArrowBack className={styles.backIcon} />
           </Link>
         </div>

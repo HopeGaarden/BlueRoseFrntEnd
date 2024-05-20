@@ -34,20 +34,20 @@ function Footer({ userID, groupID }) {
         >
           <motion.p whileHover={hoverEffect}>
             <div>
-              <FaTrophy className={styles.footerIcon} alt="mynote" />{" "}
+              <FaTrophy className={styles.footerIcon} alt="ranking" />{" "}
             </div>
             랭킹
           </motion.p>
         </NavLink>
         <NavLink
-          to="/"
+          to="/home"
           className={({ isActive }) =>
             isActive ? styles.active : styles.inactive
           }
         >
           <motion.p whileHover={hoverEffect}>
             <div>
-              <IoHomeSharp className={styles.footerIcon} alt="mynote" />{" "}
+              <IoHomeSharp className={styles.footerIcon} alt="home" />
             </div>
             홈
           </motion.p>
@@ -60,7 +60,7 @@ function Footer({ userID, groupID }) {
         >
           <motion.p whileHover={hoverEffect}>
             <div>
-              <FaUserGroup className={styles.footerIcon} alt="mynote" />{" "}
+              <FaUserGroup className={styles.footerIcon} alt="group" />{" "}
             </div>
             그룹 채널
           </motion.p>
@@ -75,7 +75,7 @@ function Footer({ userID, groupID }) {
             <div>
               <IoChatbubbleEllipses
                 className={styles.footerIcon}
-                alt="mynote"
+                alt="chat"
               />
             </div>
             소통

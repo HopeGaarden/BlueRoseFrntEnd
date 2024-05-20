@@ -1,0 +1,31 @@
+import classes from "./LoginLinkTab.module.css";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
+const LoginLinkTab = () => {
+
+    const navigate = useNavigate();
+
+    const goSignupPageHandler = () => {
+        navigate('/signup')
+    };
+    const goFindPasswordPageHandler = () => {
+        navigate('/findPassword');
+    };
+    return (
+        <div className={classes.link_container}>
+ 
+            <motion.p
+                onClick={goSignupPageHandler}
+                whileHover={{ color:'#1e4fa1' }} 
+                className={classes.sign_up_link}>회원가입</motion.p>
+            <p className={classes.dash}>|</p>
+            <motion.p 
+                onClick={goFindPasswordPageHandler}
+                whileHover={{ color:'#1e4fa1' }} 
+                className={classes.password_link}>비밀번호 찾기</motion.p>
+        </div>
+    )
+};
+
+export default LoginLinkTab;

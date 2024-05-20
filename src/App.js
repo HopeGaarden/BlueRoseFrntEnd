@@ -6,10 +6,12 @@ import Home from "./page/Home";
 import Note from "./page/Note";
 import Writing from "./page/Writing";
 import MyPage from "./page/MyPage";
-
+import SignupPage from "./page/SignupPage";
+import LoginPage from "./page/LoginPage";
+import FindPasswordPage from "./page/FindPasswordPage";
 // Router를 통해 URL마다 페이지 제작
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
+  { path: "/home", element: <Home /> },
   {
     path: "/note",
     element: <Note />,
@@ -21,6 +23,18 @@ const router = createBrowserRouter([
   {
     path: "/mypage",
     element: <MyPage />,
+  },
+  {
+    path: "/",
+    element: <LoginPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
+  },
+  {
+    path: "/findPassword",
+    element: <FindPasswordPage />,
   },
 ]);
 

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+}
+
+.clipboardIcon {
+  font-size: 90px;
+  margin: 10px auto;
+}
+.cameraIcon {
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+}
+.overlayButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin-top: 70px;
+  margin-left: 60px;
+  border-radius: 50%;
+  border: none;
+}
