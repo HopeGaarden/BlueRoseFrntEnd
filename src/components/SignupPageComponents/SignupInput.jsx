@@ -1,16 +1,23 @@
 import classes from "./SignupInput.module.css";
-import React, { useState } from "react";
+import React, {useState } from "react";
+import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import SignupLinkTab from "./SignLinkTab";
 import { MdError } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import ConfirmInput from "./ConfirmInput";
+import styles from "./ConfirmInput.module.css";
+import { LuClipboardSignature } from "react-icons/lu";
+import { IoCameraOutline } from "react-icons/io5";
 
 const SignupInput = () => {
-  const [nickName, setNickName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
+
+  const [memberInfo, setMemberInfo] = useState({
+    nickname: "",
+    email: "",
+    password: "",
+    password_verify: "",
+    diagnosis: "",
+  });
   const [isValid, setIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [checkMessage, setCheckMessage] = useState("");
@@ -19,71 +26,33 @@ const SignupInput = () => {
   const navigate = useNavigate();
 
   const nickNameChangeHandler = (event) => {
+    const { value } = event.target;
     setIsValid(true);
     setHasCheckedNickName(false);
-    setNickName(event.target.value);
+    setMemberInfo((prevInfo) => ({ ...prevInfo, nickname: value}));
   };
 
   const emailChangeHandler = (event) => {
+    const { value } = event.target;
     setIsValid(true);
     setHasCheckedEmail(false);
-    setEmail(event.target.value);
+    setMemberInfo((prevInfo) => ({ ...prevInfo, email:value }));
   };
 
   const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
+    const { value } = event.target;
+    setMemberInfo((prevInfo) => ({ ...prevInfo, password: value }));
   };
-  
+
   const passwordCheckChangeHandler = (event) => {
-    setPasswordCheck(event.target.value);
-  };
-
-  const submitHandler = async (event) => {
-    event.preventDefault();
-
-    if (!hasCheckedNickName || !hasCheckedEmail) {
-      setErrorMessage("닉네임과 이메일 중복확인을 눌러주세요.");
-      setIsValid(false);
-      return;
-    }
-
-    // 이메일 유효성 검사
-    let regex = new RegExp("[a-z0-9]+@[a-z]+[a-z].[a-z]{2,3}");
-
-    // 비밀번호 유효성 검사
-    let passRegex = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,15}$");
-
-    if (nickName.trim().length === 0) {
-      setIsValid(false);
-      setErrorMessage("닉네임을 입력해주세요.");
-      return;
-    }
-
-    if (!regex.test(email)) {
-      setErrorMessage("유효하지 않은 이메일입니다.");
-      setIsValid(false);
-      return;
-    }
-
-    if (!passRegex.test(password)) {
-      setIsValid(false);
-      setErrorMessage("비밀번호는 영문, 숫자, 특수문자를 하나씩 포함해주세요.(8~15자)");
-      return;
-    }
-
-    if (password !== passwordCheck) {
-      setIsValid(false);
-      setErrorMessage("비밀번호가 동일하지 않습니다.");
-      return;
-    }
-
-    navigate("/");
+    const { value } = event.target;
+    setMemberInfo((prevInfo) => ({ ...prevInfo, password_verify: value }));
   };
 
   const nickNameCheckHandler = (event) => {
     event.preventDefault();
     setHasCheckedNickName(true);
-    if (nickName === "") {
+    if (memberInfo.nickName === "") {
       setIsValid(false);
       setErrorMessage("중복된 닉네임입니다.");
     } else {
@@ -96,17 +65,99 @@ const SignupInput = () => {
     event.preventDefault();
     setHasCheckedEmail(true);
     let regex = new RegExp("[a-z0-9]+@[a-z]+[a-z].[a-z]{2,3}");
-    if (!regex.test(email)) {
+    if (!regex.test(memberInfo.email)) {
       setErrorMessage("유효하지 않은 이메일입니다.");
       setIsValid(false);
       return;
     }
-    if (email === "") {
+    if (memberInfo.email === "") {
       setIsValid(false);
       setErrorMessage("중복된 이메일입니다.");
     } else {
       setIsValid(true);
       setCheckMessage("생성 가능한 이메일입니다.");
+    }
+  }
+
+  const handleImageChange = (event) => {
+    const files = event.target.files;
+    if (files && files[0]) {
+      const file = files[0];
+      setMemberInfo((prevState) => ({
+        ...prevState,
+        diagnosis: file,
+      }));
+    }
+  };
+
+  const vaildation = (even) =>{
+    if (!hasCheckedNickName || !hasCheckedEmail) {
+      setErrorMessage("닉네임과 이메일 중복확인을 눌러주세요.");
+      setIsValid(false);
+      return;
+    }
+
+    // 이메일 유효성 검사
+    let regex = new RegExp("[a-z0-9]+@[a-z]+[a-z].[a-z]{2,3}");
+
+    // 비밀번호 유효성 검사
+    let passRegex = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,15}$");
+
+    if (memberInfo.nickName.trim().length === 0) {
+      setIsValid(false);
+      setErrorMessage("닉네임을 입력해주세요.");
+      return;
+    }
+
+    if (!regex.test(memberInfo.email)) {
+      setErrorMessage("유효하지 않은 이메일입니다.");
+      setIsValid(false);
+      return;
+    }
+
+    if (!passRegex.test(memberInfo.password)) {
+      setIsValid(false);
+      setErrorMessage("비밀번호는 영문, 숫자, 특수문자를 하나씩 포함해주세요.(8~15자)");
+      return;
+    }
+
+    if (memberInfo.password !== memberInfo.passwordCheck) {
+      setIsValid(false);
+      setErrorMessage("비밀번호가 동일하지 않습니다.");
+      return;
+    }
+
+  }
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("diagnosis", memberInfo.diagnosis);
+    console.log(memberInfo);
+
+    const json = JSON.stringify(memberInfo);
+    const blob = new Blob([json], {
+      type: "application/json",
+    });
+    formData.append("request", blob);
+    console.log(formData);
+
+    try {
+      const response = await axios({
+        method: "post", // 통신 방식
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        url: "http://localhost:8080/auth/signup", // 서버
+        data: formData,
+      }).then(function (response) {
+        alert("가입을 환영합니다!");
+        navigate("/"); //리다이렉트
+      });
+    } catch (error) {
+      console.error("회원가입 실패:", error); // 오류 처리
     }
   };
 
@@ -122,7 +173,6 @@ const SignupInput = () => {
         <input
           placeholder="Nickname"
           className={classes.nickname_input}
-          value={nickName}
           type="text"
           onChange={nickNameChangeHandler}
         ></input>
@@ -139,7 +189,6 @@ const SignupInput = () => {
         <input
           placeholder="Email"
           className={classes.email_input}
-          value={email}
           type="text"
           onChange={emailChangeHandler}
         ></input>
@@ -156,7 +205,6 @@ const SignupInput = () => {
         <input
           placeholder="Password"
           className={classes.password_input}
-          value={password}
           type="password"
           onChange={passwordChangeHandler}
         ></input>
@@ -165,7 +213,6 @@ const SignupInput = () => {
         <input
           placeholder="Password Check"
           className={classes.password_check_input}
-          value={passwordCheck}
           type="password"
           onChange={passwordCheckChangeHandler}
         ></input>
@@ -213,11 +260,23 @@ const SignupInput = () => {
       </AnimatePresence>
       <div>
         <h4>진단서를 첨부해주세요.</h4>
+        <input
+          type="file"
+          id="fileInput"
+          style={{ display: 'none' }}
+          onChange={handleImageChange}
+        />
         <motion.button
           whileHover={{ scale: 1.1 }}
           className={classes.confirmContainer}
+          onClick={() => document.getElementById('fileInput').click()}
         >
-          <ConfirmInput />
+          <div className={styles.container}>
+            <LuClipboardSignature className={styles.clipboardIcon} />
+            <button className={styles.overlayButton} >
+              <IoCameraOutline className={styles.cameraIcon} />
+            </button>
+          </div>
         </motion.button>
       </div>
       <div className={classes.button_container}>
