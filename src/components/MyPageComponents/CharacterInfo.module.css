@@ -1,0 +1,15 @@
+.container {
+  font-family: "Noto Sans KR", sans-serif;
+
+}
+
+.userCharacter {
+  cursor: pointer;
+}
+
+.level {
+  display: flex;
+  flex-direction: row;
+  margin-top: auto;
+  color: black;
+}

@@ -23,6 +23,9 @@ function Home() {
   const tapHover = {
     scale: 0.9
   }
+  const goSettingPageHandler =() => {
+    navigate(`/setting`)
+  }
   const goMyPageHandler =() => {
     navigate(`/mypage`)
   }
@@ -30,13 +33,14 @@ function Home() {
     <div className={styles.container}>
       <div className={styles.header}>
         <div>
-          <IoMenu className={styles.menuIcon} />
+          <IoMenu className={styles.menuIcon} onClick={goSettingPageHandler}/>
         </div>
-        <h2 className={styles.title}>블루로즈</h2>
+        <h2 className={styles.title}>블루 로즈</h2>
         <div className={styles.myPage}>
           <IoPersonSharp className={styles.myPageIcon} onClick={goMyPageHandler}/>
         </div>
       </div>
+      <div className={styles.headerBorder}></div>
       <div>      
         
         <div className={styles.profile}>
