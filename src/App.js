@@ -10,6 +10,8 @@ import SignupPage from "./page/SignupPage";
 import LoginPage from "./page/LoginPage";
 import FindPasswordPage from "./page/FindPasswordPage";
 import MyPage from "./page/MyPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Router를 통해 URL마다 페이지 제작
 const router = createBrowserRouter([
   { path: "/home", element: <Home /> },
