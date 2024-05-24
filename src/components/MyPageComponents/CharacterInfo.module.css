@@ -1,15 +1,26 @@
 .container {
-  font-family: "Noto Sans KR", sans-serif;
-
+ font-family: "Noto Sans KR", sans-serif;
 }
 
 .userCharacter {
-  cursor: pointer;
+ cursor: pointer;
 }
 
 .level {
-  display: flex;
-  flex-direction: row;
-  margin-top: auto;
-  color: black;
+ display: flex;
+ flex-direction: row;
+ margin-top: auto;
+ color: black;
+}
+
+.base {
+ height: 26px;
+ border: 3px solid;
+ margin-right: 15%;
+ margin-left: 15%;
+ justify-content: center;
+}
+.range {
+ height: 20px;
+ background: linear-gradient(to right, #ffacfc, #b76cfd);
 }

@@ -1,10 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./CharacterInfo.module.css";
 import { motion } from "framer-motion";
-const Character = () => {
+import ProgressBar from "./ProgressBar"; 
+
+const CharacterInfo = () => {
   const [nickname, setNickname] = useState("미라클");
   const [level, setLevel] = useState(5);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(123);
+
   const hoverEffect = {
     scale: 1.1,
   };
@@ -16,6 +19,7 @@ const Character = () => {
   const tapHover = {
     scale: 0.9,
   };
+
   return (
     <>
       <div className={styles.container}>
@@ -29,15 +33,18 @@ const Character = () => {
             transition={transHover}
             whileTap={tapHover}
           />
-
-          <p
-            className={styles.level}
-          >{`곧 블루로즈가 피어나요!`} <br />{`Lv ${level}  `}</p>
+          <p className={styles.level}>
+            {`곧 블루로즈가 피어나요!`} <br />
+            {`Lv ${level}`}
+          </p>
         </div>
         <p className={styles.score}></p>
+      </div>
+      <div className={styles.progressContainer}>
+        <ProgressBar level={level} score={score}/>
       </div>
     </>
   );
 };
 
-export default Character;
+export default CharacterInfo;
