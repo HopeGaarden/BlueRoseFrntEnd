@@ -15,13 +15,14 @@ const SignupInput = () => {
     nickname: "",
     email: "",
     password: "",
-    password_verify: "",
     diagnosis: "",
   });
+  const [passwordCheck,setPasswordCheck] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [checkMessage, setCheckMessage] = useState("");
   const [hasCheckedNickName, setHasCheckedNickName] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null); // 파일 미리보기 상태 추가
   const [hasCheckedEmail, setHasCheckedEmail] = useState(false);
   const navigate = useNavigate();
 
@@ -46,13 +47,13 @@ const SignupInput = () => {
 
   const passwordCheckChangeHandler = (event) => {
     const { value } = event.target;
-    setMemberInfo((prevInfo) => ({ ...prevInfo, password_verify: value }));
+    setPasswordCheck(value);
   };
 
   const nickNameCheckHandler = (event) => {
     event.preventDefault();
     setHasCheckedNickName(true);
-    if (memberInfo.nickName === "") {
+    if (memberInfo.nickname === "") {
       setIsValid(false);
       setErrorMessage("중복된 닉네임입니다.");
     } else {
@@ -87,6 +88,7 @@ const SignupInput = () => {
         ...prevState,
         diagnosis: file,
       }));
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
@@ -103,7 +105,7 @@ const SignupInput = () => {
     // 비밀번호 유효성 검사
     let passRegex = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,15}$");
 
-    if (memberInfo.nickName.trim().length === 0) {
+    if (memberInfo.nickname.trim().length === 0) {
       setIsValid(false);
       setErrorMessage("닉네임을 입력해주세요.");
       return;
@@ -121,7 +123,7 @@ const SignupInput = () => {
       return;
     }
 
-    if (memberInfo.password !== memberInfo.passwordCheck) {
+    if (memberInfo.password !== passwordCheck) {
       setIsValid(false);
       setErrorMessage("비밀번호가 동일하지 않습니다.");
       return;
@@ -129,35 +131,31 @@ const SignupInput = () => {
 
   }
 
-  const submitHandler = async (e) => {
+const submitHandler = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
-
     formData.append("diagnosis", memberInfo.diagnosis);
-    console.log(memberInfo);
-
-    const json = JSON.stringify(memberInfo);
+  
+    const { diagnosis, ...memberData } = memberInfo; // diagnosis 필드를 분리
+    const json = JSON.stringify(memberData);
     const blob = new Blob([json], {
       type: "application/json",
     });
     formData.append("request", blob);
-    console.log(formData);
-
+  
     try {
-      const response = await axios({
-        method: "post", // 통신 방식
+      const response = await axios.post("http://localhost:8080/auth/signup", formData, {
+        withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        url: "http://localhost:8080/auth/signup", // 서버
-        data: formData,
-      }).then(function (response) {
-        alert("가입을 환영합니다!");
-        navigate("/"); //리다이렉트
       });
+      console.log(response);
+      alert("가입을 환영합니다!");
+      navigate("/"); // 리다이렉트
     } catch (error) {
-      console.error("회원가입 실패:", error); // 오류 처리
+      console.error("회원가입 실패:", error);
     }
   };
 
@@ -266,6 +264,12 @@ const SignupInput = () => {
           style={{ display: 'none' }}
           onChange={handleImageChange}
         />
+        <div className={classes.flexContainer}>
+        {previewImage && ( // 미리보기 이미지 표시
+              <div className={classes.preview_container}>
+                <img src={previewImage} alt="Diagnosis Preview" className={classes.preview_image} />
+              </div>
+            )}
         <motion.button
           whileHover={{ scale: 1.1 }}
           className={classes.confirmContainer}
@@ -278,6 +282,7 @@ const SignupInput = () => {
             </button>
           </div>
         </motion.button>
+        </div>
       </div>
       <div className={classes.button_container}>
         <motion.button
