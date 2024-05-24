@@ -101,3 +101,23 @@
   cursor: pointer; /* 커서 타입 */
   border-style: none;
 }
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+}
+
+.preview_container {
+  margin-right: 20px; /* 간격을 조정할 수 있습니다 */
+}
+
+.preview_image {
+  margin-left: 65%;
+  max-width: 100px; /* 이미지 크기를 조정할 수 있습니다 */
+  height: auto;
+}
+
+.confirmContainer {
+  display: flex;
+  align-items: center;
+}
