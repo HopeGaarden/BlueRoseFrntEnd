@@ -10,7 +10,7 @@ import SignupPage from "./page/SignupPage";
 import LoginPage from "./page/LoginPage";
 import FindPasswordPage from "./page/FindPasswordPage";
 import MyPage from "./page/MyPage";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import DetailWikiPage from "./page/DetailWikiPage";
 
 // Router를 통해 URL마다 페이지 제작
 const router = createBrowserRouter([
@@ -42,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/findPassword",
     element: <FindPasswordPage />,
+  },
+  {
+    path: "/detail/:diseaseCode",
+    element: <DetailWikiPage />,
   },
 ]);
 

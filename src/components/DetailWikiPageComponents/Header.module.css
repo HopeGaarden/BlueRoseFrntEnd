@@ -1,0 +1,36 @@
+.backIcon {
+  font-size: 30px;
+  color: #1e4fa1;
+  cursor: pointer;
+  margin-right: 0; /* 오른쪽 여백 제거 */
+}
+
+.backIcon:hover {
+  color: lightslategray;
+}
+
+.header {
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 0px 20px;
+  padding-top: 10px;
+  color: #1e4fa1;
+  background-color: #ffffff;
+}
+.headerBorder{
+  border-bottom: 1px solid;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #1e4fa1;
+  margin-bottom: 10px;
+}
+.title {
+  color: #1e4fa1;
+  font-size: 24px;
+}
+.rightSpace {
+  width: 30px;
+}

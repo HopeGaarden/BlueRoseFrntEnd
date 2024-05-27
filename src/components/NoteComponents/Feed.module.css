@@ -62,7 +62,7 @@ margin-left: auto;
   border-color: transparent;
   border-radius: 8px;
   margin: 10px;
-  background-color: #f2f2f2;
+  background-color: #1e4ea12f;
   box-shadow: 2px 3px 4px #333;
 }
 .feedContent {
@@ -79,6 +79,7 @@ margin-left: auto;
 }
 .roseContainer, .commentContainer{
   border: none;
+  background-color: transparent;
 
 }
 .roseIcon, .commentIcon{

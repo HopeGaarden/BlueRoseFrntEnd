@@ -1,0 +1,53 @@
+.container{
+  margin: 10px;
+}
+.diseaseContainer{
+  padding-left: 10px;
+  padding-right: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 8px;
+  margin: 10px;
+  background-color: #1e4ea12f;
+  box-shadow: 2px 3px 4px #333;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  width: 360px;
+}
+.diseaseName{
+  display: flex;
+  font-size: 16px;
+  padding-bottom: 10px;
+  border-width: 1px;
+  border-bottom-style: solid;
+}
+.diseaseCode{
+color: blue;
+}
+.diseaseContent{
+  font-size: 14px;
+  text-align: left;
+}
+.myDisease{
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.otherDisease{
+  font-weight: bold;
+}
+.myIcon{
+  font-size: 18px;
+}
+.otherIcon{
+  font-size: 18px;
+}
+.dots{
+  margin-left: auto;
+  font-size: 20px;
+  color: #1e4fa1;
+}
+.dots:hover{
+  color: lightslategray;
+  cursor: pointer;
+}

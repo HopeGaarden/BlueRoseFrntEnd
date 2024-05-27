@@ -1,26 +1,26 @@
 .container {
  font-family: "Noto Sans KR", sans-serif;
+ font-weight: bold;
+ display: flex;
+ justify-content: center;
+ padding: 10px;
+ margin-bottom: 20px;
+
 }
 
 .userCharacter {
  cursor: pointer;
+ margin-left: 14px;
 }
+.text{
+  color: #1e4fa1;
 
+}
 .level {
  display: flex;
  flex-direction: row;
  margin-top: auto;
- color: black;
-}
-
-.base {
- height: 26px;
- border: 3px solid;
- margin-right: 15%;
- margin-left: 15%;
+ color: lightslategray;
+ font-size: 15px;
  justify-content: center;
-}
-.range {
- height: 20px;
- background: linear-gradient(to right, #ffacfc, #b76cfd);
 }

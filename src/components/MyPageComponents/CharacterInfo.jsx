@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import ProgressBar from "./ProgressBar"; 
 
 const CharacterInfo = () => {
-  const [nickname, setNickname] = useState("미라클");
   const [level, setLevel] = useState(5);
   const [score, setScore] = useState(123);
 
@@ -24,7 +23,6 @@ const CharacterInfo = () => {
     <>
       <div className={styles.container}>
         <div className={styles.characterContainer}>
-          <h4 className={styles.nickname}>{`${nickname}`}</h4>
           <motion.img
             src={`/images/level${level}.png`}
             alt="Character Image"
@@ -33,12 +31,11 @@ const CharacterInfo = () => {
             transition={transHover}
             whileTap={tapHover}
           />
-          <p className={styles.level}>
-            {`곧 블루로즈가 피어나요!`} <br />
-            {`Lv ${level}`}
-          </p>
+          <div className={styles.text}>
+            {`곧 블루로즈가 피어나요!`}
+          </div>
+          <div className={styles.level}>{`Lv ${level}`}</div>
         </div>
-        <p className={styles.score}></p>
       </div>
       <div className={styles.progressContainer}>
         <ProgressBar level={level} score={score}/>

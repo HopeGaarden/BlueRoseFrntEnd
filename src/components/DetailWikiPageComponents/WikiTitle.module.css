@@ -1,0 +1,12 @@
+.titleContainer{
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+}
+.diseaseCode{
+  color: blue;
+}
+.editDate{
+  font-size: 12px;
+  padding-bottom: 10px;
+}

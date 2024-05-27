@@ -29,8 +29,12 @@ function Home() {
   const goMyPageHandler =() => {
     navigate(`/mypage`)
   }
+  const animationVariants = {
+    initial: { opacity: 0, x: -50 },
+    animate: { opacity: 1, x: 0,},
+};
   return (
-    <div className={styles.container}>
+    <>
       <div className={styles.header}>
         <div>
           <IoMenu className={styles.menuIcon} onClick={goSettingPageHandler}/>
@@ -41,6 +45,10 @@ function Home() {
         </div>
       </div>
       <div className={styles.headerBorder}></div>
+      <motion.div variants={animationVariants}
+                        initial="initial"
+                        animate="animate"
+                        className={styles.container}> 
       <div>      
         
         <div className={styles.profile}>
@@ -102,7 +110,8 @@ function Home() {
       </div>
 
       <Footer userID={userID} groupID={groupID} />
-    </div>
+      </motion.div>
+    </>
   );
 }
 

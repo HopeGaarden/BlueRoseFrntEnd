@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
 
 const SegmentedControl = ({
@@ -11,7 +12,7 @@ const SegmentedControl = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(defaultIndex);
   const componentReady = useRef();
-
+  const navigate = useNavigate();
   // Determine when the component is "ready"
   useEffect(() => {
     componentReady.current = true;
@@ -29,6 +30,9 @@ const SegmentedControl = ({
   const onInputChange = (value, index) => {
     setActiveIndex(index);
     callback(value, index);
+    if (segments[index].path) {
+      navigate(segments[index]);
+    }
   };
 
   return (

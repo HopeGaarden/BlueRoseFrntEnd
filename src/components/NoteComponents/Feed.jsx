@@ -3,7 +3,7 @@ import styles from "./Feed.module.css";
 import { HiDotsVertical } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { FaRegComment } from "react-icons/fa";
-function FeedSummary() {
+function Feed() {
   const dummyFeeds = [
     //demo data
     {
@@ -108,6 +108,7 @@ function FeedSummary() {
                   <FaRegComment className={styles.commentIcon} />
                 </motion.button>
                 <div className={styles.feedText}>{feed.content}</div>
+                
               </div>
               <div className={styles.commentContainer}>
                 {feed.comments.length > 1 ? (
@@ -133,4 +134,4 @@ function FeedSummary() {
   );
 }
 
-export default FeedSummary;
+export default Feed;
