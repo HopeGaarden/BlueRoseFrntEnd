@@ -10,32 +10,38 @@ const BlueWiki = () => {
   const navigate = useNavigate();
   const param = useParams();
   const defaultData = {
-    name: '독감',
-    code: 'J10-J11.8',
+    name: '병명',
+    code: '코드',
     content: '아직 등록된 정보가 없어요. 정보를 입력해주세요!',
   };
 
   const userDatas = [
     {
-      name: "독감",
-      code: "J10-J11.8",
+      name: "선천성 및 발달성 근무력증",
+      code: "G70.2",
       content:
-        "인플루엔자(Influenza) 또는 인플루엔자바이러스 감염증(Influenza viruses disease)은 인플루엔자바이러스 감염에 의해 발생하는 급성 호흡기 질환으로, 갑작스러운 고열, 두통, 근육통, 오한 등이 특징이다.",
+        "영아기 및 소아기에 증상이 발현하면서 근육쇠약 혹은 근력 저하를 주 증상으로 함 복시 등의 안구 증상이 나타나거나 전신적인 근육 쇠약과 함께 아세틸콜린 수용체 항체 검사에서 양성 소견이 나타나는 경우, 단 아세틸콜린 수용체 항체검사가 음성인 경우 근전도검사",
     },
   ];
 
   const otherDatas = [
     {
-      name: "코로나바이러스감염증-19",
-      code: "U07.1",
+      name: "폐포단백질증",
+      code: "J84.0",
       content:
-        "2019년 11월, 중국 후베이성 우한시에서 처음으로 발생하여 보고된 새로운 유형의 변종 코로나바이러스인 SARS-CoV-2에 의해 발병한 급성 호흡기 전염병이다.",
+        "o 흉부 CT 검사의 특이적 소견o 기관지내시경을 통한 기관지폐포세척액의 특징적 육안 소견 또는 폐조직검사로 확인",
     },
     {
-      name: "광견병",
-      code: "A82",
+      name: "색소망막염",
+      code: "H35.51",
       content:
-        "광견병(狂犬病)은 사람을 포함한 포유류 동물의 뇌에 염증을 유발하는 바이러스성 질병이다. 랍도바이러스과에 속하는 바이러스 중 하나에 전염된 동물에게 발병하는 인수공통전염병이다. 극히 드물게 장기 이식으로 감염된 사례도 있다.",
+        "망막전위도 검사 등을 통해 photoreceptor기능의 손상과 시야검사를 통해 시야협착 확인",
+    },
+    {
+      name: "척수공동증 및 연수공동증",
+      code: "G95.0",
+      content:
+        "o 영상검사에서 척수 및 뇌간의 공동이 확인된 환자로, 상기 공동을 유발할 수 있는 외상 및 손상의 병력이 없는 경우o 두통, 배부통증, 팔저림, 사지 등의 마비 등 그 외 임상의가 판단하는 증상o Asymptomatic hydromyelia 는 제외",
     },
   ];
 
@@ -60,7 +66,7 @@ const BlueWiki = () => {
     scale: 1.05,
   };
 const goDetailWikiPageHandler = (disease) =>{
-  navigate(`/detail/${disease.code}`)
+  navigate(`/detail/${disease.name}/${disease.code}/${disease.content}`)
 }
   const renderDisease = (disease) => (
     <motion.button whileHover={hoverEffect} className={styles.diseaseContainer}
@@ -71,8 +77,8 @@ const goDetailWikiPageHandler = (disease) =>{
         <HiDotsVertical className={styles.dots} />
       </p>
       <p className={styles.diseaseContent}>
-        {disease.content.length > 100
-          ? `${disease.content.slice(0, 100)}...`
+        {disease.content.length > 50
+          ? `${disease.content.slice(0, 50)}...`
           : disease.content}
       </p>
     </motion.button>

@@ -35,13 +35,14 @@ function Writing() {
         <Link to={`/note/`}>
           <IoClose className={styles.icon} />
         </Link>
+        <div>
         <motion.button whileHover={hoverEffect} className={styles.button}>
           임시 저장
         </motion.button>
         <motion.button whileHover={hoverEffect} className={styles.button}>
-          {" "}
-          등록{" "}
+          등록
         </motion.button>
+        </div>
       </header>
       <div className={styles.inputContainer}>
         <textarea

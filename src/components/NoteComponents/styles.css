@@ -40,7 +40,8 @@
 }
 
 .segment {
-  min-width: 120px;
+  min-width: 90px; /* 너비를 100px로 수정 */
+  height: 30px; /* 높이를 30px로 수정 */
   position: relative;
   text-align: center;
   z-index: 1;
@@ -48,7 +49,6 @@
 
 .segment label {
   cursor: pointer;
-  display: block;
   font-weight: 700;
   padding: 10px;
   transition: color 0.5s ease;

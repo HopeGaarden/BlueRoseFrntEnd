@@ -1,0 +1,76 @@
+
+.modal {
+  width: 300px;
+  max-height: 80vh; /* 모달의 최대 높이를 화면 높이의 80%로 설정합니다. */
+  overflow-y: auto; /* 모달 내용이 넘칠 경우 스크롤을 추가합니다. */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경색을 설정합니다. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalButton {
+  font-family: "Noto Sans KR", sans-serif;
+  border: none;
+  background-color: #dbe8ff;
+  color: #1e4fa1;
+  font-size: 12px;
+  border-radius: 100px;
+  box-shadow: 1px 2px 1px;
+  font-weight: bold;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.modalButton:hover {
+  color: blue; /* 호버 시 색상 변경 */
+}
+
+.titleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+}
+.textareaContent {
+  font-family: "Noto Sans KR", sans-serif;
+  border: none;
+  padding: 8px 10px;
+  font-size: 16px;
+  flex: 1;
+  height: 200px;
+  margin: 10px;
+}
+
+.inputContainer {
+  display: flex;
+}
+
+.buttonContainer{
+  display: flex;
+justify-content: space-between
+}
+.editButton{
+  font-family: "Noto Sans KR", sans-serif;
+  border: none;
+  background-color: #dbe8ff;
+  color: #1e4fa1;
+  font-size: 12px;
+  border-radius: 100px;
+  box-shadow: 1px 2px 1px;
+  font-weight: bold;
+  cursor: pointer;
+}

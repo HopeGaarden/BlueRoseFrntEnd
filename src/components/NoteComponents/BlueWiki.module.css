@@ -13,7 +13,6 @@
   box-shadow: 2px 3px 4px #333;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: bold;
-  width: 360px;
 }
 .diseaseName{
   display: flex;
@@ -26,7 +25,7 @@
 color: blue;
 }
 .diseaseContent{
-  font-size: 14px;
+  font-size: 13px;
   text-align: left;
 }
 .myDisease{

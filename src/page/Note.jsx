@@ -34,6 +34,7 @@ function Note() {
   return (
     <div className={styles.container}>
       <Header />
+      <div className={styles.contentContainer}>
       <SegmentedControl
         className={styles.segmentedControl}
         callback={(val) => setSelectedValue(val)}
@@ -64,6 +65,7 @@ function Note() {
       >
         <ContentComponent className={styles.feeds} />
       </motion.div>
+      </div>
       <Footer userID={searchParams.get("userID")} groupID={groupID} />
     </div>
   );

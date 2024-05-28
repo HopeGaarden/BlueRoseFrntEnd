@@ -3,15 +3,18 @@ import Header from "../components/DetailWikiPageComponents/Header";
 import WikiContent from "../components/DetailWikiPageComponents/WikiContent";
 import WikiTitle from "../components/DetailWikiPageComponents/WikiTitle";
 import styles from "./DetailWikiPage.module.css";
+import Footer from "../layouts/Footer";
 
 const DetailWikiPage = () => {
+  const { diseaseName } = useParams();
   const { diseaseCode } = useParams();
+  const { diseaseContent } = useParams();
 
   // api를 통해 병명코드로 나머지 내용들 가져오기
   const disease = {
-    name: "병명",
+    name: diseaseName,
     code: diseaseCode,
-    content: "여기에 해당 질병에 대한 정보를 적어주세요.",
+    content: diseaseContent,
   };
   return (
     <>
@@ -20,6 +23,7 @@ const DetailWikiPage = () => {
         <WikiTitle diseaseName={disease.name} diseaseCode={disease.code} />
         <WikiContent diseaseContent={disease.content} />
       </div>
+      <Footer />
     </>
   );
 };
