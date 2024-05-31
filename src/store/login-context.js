@@ -5,8 +5,7 @@ const loginContext = React.createContext({
     nickname : '',
     email : '',
     password : '',
-    loginUser : (memberId,nickname,email,password) => {},
-    logoutUser : (email,password) => {},
+    loginUser : (nickname,email) => {},
 });
 
 export default loginContext;

@@ -3,42 +3,48 @@ import classes from "./LoginInput.module.css";
 import { motion, AnimatePresence } from 'framer-motion';
 import LoginLinkTab from './LoginLinkTab';
 import { MdError } from "react-icons/md";
-import { login } from '../../api/AuthApiService';
 import loginContext from '../../store/login-context';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import base64 from 'base-64';
 
 const LoginInput = () => {
 
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
     const [isValid,setIsValid] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
+    const [credentials, setCredentials] = useState({
+        email: "",
+        password: "",
+    });
 
     const loginCtx = useContext(loginContext);
     const navigate = useNavigate();
 
     const emailChangeHandler = (event) => {
+        const { value } = event.target;
         setIsValid(true);
-        setEmail(event.target.value);
-    };
-    const passwordChangeHandler = (event) => {
-        setIsValid(true);
-        setPassword(event.target.value);
-    };
+        setCredentials((prevInfo) => ({ ...prevInfo, email:value }));
+      };
+    
+      const passwordChangeHandler = (event) => {
+        const { value } = event.target;
+        setCredentials((prevInfo) => ({ ...prevInfo, password: value }));
+      };
+
     const submitHandler = async (event) => {
         event.preventDefault();
         // email valid expression
         // @ , . 포함 확인
         // .뒤에 2~3개의 문자 필요
         let regex = new RegExp('[a-z0-9]+@[a-z]+\[a-z].[a-z]{2,3}');
-        if (!regex.test(email)){
+        if (!regex.test(credentials.email)){
             setErrorMessage("유효하지 않은 이메일입니다.");
             setIsValid(false);
             return;
         }
 
-        if (email.length === 0 || password.length === 0){
-            if (email.length === 0){
+        if (credentials.email.length === 0 || credentials.password.length === 0){
+            if (credentials.email.length === 0){
                 setErrorMessage("이메일을 입력해주세요.");
             }else{
                 setErrorMessage("비밀번호를 입력해주세요.");
@@ -46,14 +52,43 @@ const LoginInput = () => {
             setIsValid(false);
             return;
         }
-        loginCtx.loginUser({
-            memberId : 1,
-            nickname : "SOLL",
-            email : 'SOLL@dankook.ac.kr',
-            password : '1234'
-        });
-        navigate('/home');
-    }
+        console.log(credentials);
+        try {
+            const response = await axios
+              .post("http://localhost:8080/auth/login",credentials,
+            {
+                withCredentials: true,
+                headers: {
+                    'Content-Type' : 'application/json;charset=UTF-8'
+                }
+            }
+            ).then((result) => {
+                const accesstoken = result.data.access_token;
+                const payload = accesstoken.substring(accesstoken.indexOf('.') + 1, accesstoken.lastIndexOf('.'));
+                const decodePayload = base64.decode(payload);
+                const jsonToken = JSON.parse(decodePayload);
+                
+                const nickname = jsonToken.nickname;
+                const email = jsonToken.sub;
+
+                window.sessionStorage.setItem("accesstoken", JSON.stringify(accesstoken));
+                loginCtx.loginUser({
+                    nickname,email
+                });
+                alert(`환영합니다. ${nickname}님`);
+                navigate("/home"); //리다이렉트                  
+              });
+          } catch (error) {
+            if (error.response && error.response.status === 403) {
+                setIsValid(false);
+                setErrorMessage("로그인하신 회원정보가 없습니다.");
+                return;
+            } else {
+                setIsValid(false);
+                setErrorMessage("잠시 후에 다시 시도해주세요.");
+            }
+          }
+    };
     const messageVariants = {
         initial : { opacity : 0, y : -30},
         animate : { opacity : 1, y : 0},
@@ -65,16 +100,16 @@ const LoginInput = () => {
                 <input 
                 placeholder='Email'
                 className={classes.email_input}
-                value={email} 
-                type='text' 
+                type='text'
+                value={credentials.email}
                 onChange={emailChangeHandler}></input>
             </div>
             <div className={classes.input_wrapper}>
                 <input 
                     placeholder='Password'
                     className={classes.password_input}
-                    value={password} 
                     type='password' 
+                    value={credentials.password}
                     onChange={passwordChangeHandler}></input>
             </div>
             <AnimatePresence>
