@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../layouts/Footer";
 import styles from "./Home.module.css";
 import { IoMenu, IoPersonSharp } from "react-icons/io5";
 import { motion } from "framer-motion";
+import loginContext from "../store/login-context";
 
 function Home() {
   const navigate = useNavigate();
   // const [loading, setLoading] = useState(true);
+  const loginCtx = useContext(loginContext);
   const [nickname, setNickname] = useState("미라클");
   const [score, setScore] = useState(5);
   const [userID, setUserID] = useState(0);
@@ -23,6 +25,12 @@ function Home() {
   const tapHover = {
     scale: 0.9
   }
+  useEffect(() => {
+    if (loginCtx.email.trim().length === 0 || loginCtx.nickname.trim().length === 0){
+        navigate("/");
+        return;
+    }
+  },);
   const goSettingPageHandler =() => {
     navigate(`/setting`)
   }
@@ -52,7 +60,7 @@ function Home() {
       <div>      
         
         <div className={styles.profile}>
-        <h3 className={styles.welcome}>{`환영합니다. ${nickname} 님`} </h3>
+        <h3 className={styles.welcome}>{`환영합니다. ${loginCtx.nickname} 님`} </h3>
         <motion.img
           src={`/images/level${score}.png`}
           alt="Character Image"
