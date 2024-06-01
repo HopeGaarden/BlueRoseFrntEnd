@@ -10,7 +10,7 @@ function Home() {
   // const [loading, setLoading] = useState(true);
   const [nickname, setNickname] = useState("미라클");
   const [score, setScore] = useState(5);
-  const [userID, setUserID] = useState(0);
+  const [diseaseName, setDiseaseName] = useState(0);
   const [groupID, setGroupID] = useState(0);
   const [feedID, setFeedID] = useState(0);
 
@@ -109,7 +109,7 @@ function Home() {
         </div>
       </div>
 
-      <Footer userID={userID} groupID={groupID} />
+      <Footer diseaseName={diseaseName} />
       </motion.div>
     </>
   );

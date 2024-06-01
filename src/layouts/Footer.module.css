@@ -4,14 +4,15 @@
   align-items: center;
   background-color: #f0f4f8;
   font-family: "Noto Sans KR", sans-serif;
-  position: fixed; /* 화면 하단에 고정 */
-  bottom: 225px; /* 화면 하단에 위치 */
-  width: 360px; /* 전체 너비 */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  position: fixed; 
+  bottom: 244px;
+  width: 360px; 
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .footerIcon {
-  margin-bottom: 5px; /* 아이콘과 텍스트 사이의 간격 */
   font-size: 22px;
 }
 

@@ -11,6 +11,8 @@ import LoginPage from "./page/LoginPage";
 import FindPasswordPage from "./page/FindPasswordPage";
 import MyPage from "./page/MyPage";
 import DetailWikiPage from "./page/DetailWikiPage";
+import Footer from "./layouts/Footer";
+import ChatPage from "./page/ChatPage";
 
 // Router를 통해 URL마다 페이지 제작
 const router = createBrowserRouter([
@@ -47,13 +49,18 @@ const router = createBrowserRouter([
     path: "/detail/:diseaseName/:diseaseCode/:diseaseContent",
     element: <DetailWikiPage />,
   },
+  {
+    path: "/chat",
+    element: <ChatPage />,
+  },
 ]);
 
 function App() {
   return (
     <LoginProvider>
       <AppContainer>
-        <RouterProvider router={router} />
+        <RouterProvider router={router}>
+        </RouterProvider>
       </AppContainer>
     </LoginProvider>
   );

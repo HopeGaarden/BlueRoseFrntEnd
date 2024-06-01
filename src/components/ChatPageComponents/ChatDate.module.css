@@ -1,0 +1,14 @@
+.container{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.date{
+  padding: 5px 20px 5px 20px;
+  background-color: #7ba7e0fa;
+  border-radius: 10px;
+
+}
