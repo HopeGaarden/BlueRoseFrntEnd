@@ -29,7 +29,6 @@ const EditModal = ({ isOpen, onRequestClose, number, title, content, onSave }) =
   };
   const handleCriticalModalClose = () => {
     setIsCriticalModalOpen(false);
-    onSave(number, inputContent); // 콘텐츠를 주어진 번호와 함께 저장
     onRequestClose();
   };
 
@@ -38,7 +37,7 @@ const EditModal = ({ isOpen, onRequestClose, number, title, content, onSave }) =
     setIsCheckModalOpen(false);
     onRequestClose();
   };
-  const handleCriticalSave = () => {
+  const handleCriticalSave = (number, inputContent) => {
     onSave(number, inputContent); // 콘텐츠를 주어진 번호와 함께 저장
     setIsCriticalModalOpen(false);
     onRequestClose();
@@ -102,7 +101,7 @@ const EditModal = ({ isOpen, onRequestClose, number, title, content, onSave }) =
         onRequestClose={handleCriticalModalClose}
         number={number}
         title={title}
-        content={content}
+        content={inputContent}
         onSave={handleCriticalSave}
       />
     </div>
