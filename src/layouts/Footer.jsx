@@ -23,7 +23,7 @@ function Footer({ userID, groupID }) {
             <div>
               <FaPencilAlt className={styles.footerIcon} alt="note" />
             </div>
-            <span>나의 노트</span>
+            <span>게시글</span>
           </motion.div>
         </NavLink>
 
