@@ -44,7 +44,7 @@ const router = createBrowserRouter([
     element: <FindPasswordPage />,
   },
   {
-    path: "/detail/:diseaseName/:diseaseCode/:diseaseContent",
+    path: "/detail/:wiki_id",
     element: <DetailWikiPage />,
   },
 ]);

@@ -64,6 +64,7 @@ const LoginInput = () => {
             }
             ).then((result) => {
                 const accesstoken = result.data.access_token;
+                const diseaseId = result.data.disease_id; 
                 const payload = accesstoken.substring(accesstoken.indexOf('.') + 1, accesstoken.lastIndexOf('.'));
                 const decodePayload = base64.decode(payload);
                 const jsonToken = JSON.parse(decodePayload);
@@ -72,6 +73,7 @@ const LoginInput = () => {
                 const email = jsonToken.sub;
 
                 window.sessionStorage.setItem("accesstoken", JSON.stringify(accesstoken));
+                window.sessionStorage.setItem("diseaseId",diseaseId);
                 loginCtx.loginUser({
                     nickname,email
                 });

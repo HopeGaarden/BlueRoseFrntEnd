@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, version } from "react";
 import styles from "./WikiContent.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaPenToSquare } from "react-icons/fa6";
 import EditModal from "../../layouts/EditModal";
 
-const WikiContent = ({ diseaseContent }) => {
+const WikiContent = ({ id,diseaseStandard, diseaseSymptom, diseaseTherapy, diseaseEtc,diseaseVersion}) => {
   const [isOpen, setIsOpen] = useState([true, true, true, true]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ number: 0, title: "", content: "" });
+  const [modalContent, setModalContent] = useState({ number: 0, title: "", content: "",version: 0 });
 
   const sections = [
-    { number: 1, title: "검사기준", content: diseaseContent },
-    { number: 2, title: "증상", content: "아직 등록된 정보가 없어요. 정보를 입력해주세요!" },
-    { number: 3, title: "치료", content: "아직 등록된 정보가 없어요. 정보를 입력해주세요!" },
-    { number: 4, title: "기타", content: "아직 등록된 정보가 없어요. 정보를 입력해주세요!" },
+    { number: 1, title: "검사기준", content: diseaseStandard, version: diseaseVersion },
+    { number: 2, title: "증상", content: diseaseSymptom, version: diseaseVersion },
+    { number: 3, title: "치료", content: diseaseTherapy, version: diseaseVersion },
+    { number: 4, title: "기타", content: diseaseEtc, version: diseaseVersion },
   ];
 
   const [sectionContent, setSectionContent] = useState(sections);
@@ -24,21 +24,13 @@ const WikiContent = ({ diseaseContent }) => {
     );
   };
 
-  const handleModalOpen = (number, title, content) => {
-    setModalContent({ number, title, content });
+  const handleModalOpen = (number, title, content,version) => {
+    setModalContent({ number, title, content, version });
     setModalOpen(true);
   };
 
   const handleModalClose = () => {
     setModalOpen(false);
-  };
-
-  const handleSave = (number, content) => {
-    setSectionContent((prevContent) =>
-      prevContent.map((section) =>
-        section.number === number ? { ...section, content } : section
-      )
-    );
   };
 
   return (
@@ -57,22 +49,23 @@ const WikiContent = ({ diseaseContent }) => {
             </div>
             <FaPenToSquare
               className={styles.icons}
-              onClick={() => handleModalOpen(section.number, section.title, section.content)}
+              onClick={() => handleModalOpen(section.number, section.title, section.content, section.version)}
             />
           </div>
-          {isOpen[index] && (
-            <p className={styles.contentContainer}>{section.content}</p>
-          )}
+          <p className={styles.contentContainer}>
+            {section.content.length > 50 ? `${section.content.substring(0, 50)}...` : section.content}
+          </p>
         </div>
       ))}
 
       <EditModal
         isOpen={modalOpen}
         onRequestClose={handleModalClose}
+        id={id}
         number={modalContent.number}
         title={modalContent.title}
         content={modalContent.content}
-        onSave={handleSave}
+        version={modalContent.version}
       />
       
     </>
