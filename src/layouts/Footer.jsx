@@ -9,6 +9,7 @@ function Footer({ userID, groupID }) {
   const hoverEffect = {
     scale: 1.1,
   };
+  console.log('Rendering Footer');
   return (
     <React.Fragment>
       <div className={styles.footer}>
@@ -18,12 +19,12 @@ function Footer({ userID, groupID }) {
             isActive ? styles.active : styles.inactive
           }
         >
-          <motion.p whileHover={hoverEffect}>
+          <motion.div whileHover={hoverEffect}>
             <div>
               <FaPencilAlt className={styles.footerIcon} alt="note" />
             </div>
-            <span>나의 노트</span>
-          </motion.p>
+            <span>게시글</span>
+          </motion.div>
         </NavLink>
 
         <NavLink
@@ -32,12 +33,12 @@ function Footer({ userID, groupID }) {
             isActive ? styles.active : styles.inactive
           }
         >
-          <motion.p whileHover={hoverEffect}>
+          <motion.div whileHover={hoverEffect}>
             <div>
               <FaTrophy className={styles.footerIcon} alt="ranking" />{" "}
             </div>
             랭킹
-          </motion.p>
+          </motion.div>
         </NavLink>
         <NavLink
           to="/home"
@@ -45,12 +46,12 @@ function Footer({ userID, groupID }) {
             isActive ? styles.active : styles.inactive
           }
         >
-          <motion.p whileHover={hoverEffect}>
+          <motion.div whileHover={hoverEffect}>
             <div>
               <IoHomeSharp className={styles.footerIcon} alt="home" />
             </div>
             홈
-          </motion.p>
+          </motion.div>
         </NavLink>
         <NavLink
           to={`/group/`}
@@ -58,12 +59,12 @@ function Footer({ userID, groupID }) {
             isActive ? styles.active : styles.inactive
           }
         >
-          <motion.p whileHover={hoverEffect}>
+          <motion.div whileHover={hoverEffect}>
             <div>
               <FaUserGroup className={styles.footerIcon} alt="group" />{" "}
             </div>
             그룹 채널
-          </motion.p>
+          </motion.div>
         </NavLink>
 
         <NavLink

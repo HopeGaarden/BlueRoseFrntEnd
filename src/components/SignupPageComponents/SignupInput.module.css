@@ -1,12 +1,11 @@
 .input_wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin: 10px;
 }
 .nickname_input,
-.email_input,
-.password_input,
-.password_check_input {
+.email_input
+{
   height: 45px;
   padding: 10px 10px;
   border: 1px solid #c4c4c4;
@@ -19,6 +18,21 @@
   box-sizing: border-box;
   width: 70%;
   margin: 0 auto;
+}
+.password_input,
+.password_check_input {
+  height: 45px;
+  padding: 10px 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Noto Sans KR", sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  margin-left: 10px;
 }
 .nickname_input:focus {
   border-color: #2f6087;
